@@ -15,3 +15,23 @@
     </ul>
   </div>
 </div>
+
+<div class="container text-left">
+  <h2>Question on component communication: </h2>
+  <p>
+      In this simple chess-clock exercise, I needed for a set of components ("timers") to behave like radio buttons - when one player's timer is started, the others are automatically stopped, as a convenience.
+  </p>
+  <p>
+      For now, I've implemented this by exposing each timer's on/off state as an input, so that the parent can manipulate each one directly.  
+  </p>
+  <p>
+      Thoughts?
+  </p>
+  <p>
+      I would prefer to just signal the stop request to all relevant children and let them encapsulate their own state, but none of the component communication patterns in <a href="https://angular.io/docs/ts/latest/cookbook/component-communication.html#!#parent-to-child-on-changes">the cookbook</a> seems to match.
+  </p>
+  <p>
+      <a href="https://github.com/nbogie/js-game-timer-angular2">Source is here.</a>
+  </p>
+
+</div>
