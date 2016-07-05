@@ -13,15 +13,9 @@ import { PlayerTimerComponent } from './player-timer.component';
 
 export class TimerSetComponent implements OnInit {
 
-  showToDos: boolean = false;
-
   players: Player[] = 'Errol Jon Pankaj Neill'
       .split(' ')
       .map(n => this.makePlayer(n));
-
-  todos: string[] = [
-    "Bear in mind: primary users: phones and tablets.",
-    "Require confirmation of a time reset - it's uncommon and dangerous."];
 
   constructor() {}
 
@@ -36,19 +30,13 @@ export class TimerSetComponent implements OnInit {
   }
 
   deletePlayer(player) {
-    console.log("deletePlayer called for " + player);
     let ix = this.players.indexOf(player);
     if (ix >= 0){
-      console.log("found player so deleting it at "+ix);
       this.players.splice(ix, 1);
     }
   }
   startPlayer(component) {
     console.log("a timer was started: " + component);
-  }
-
-  toggleShowToDos() {
-    this.showToDos = !this.showToDos;
   }
 
   addPlayer() {

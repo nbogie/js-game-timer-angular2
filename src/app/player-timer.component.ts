@@ -23,14 +23,15 @@ export class PlayerTimerComponent implements OnInit {
 
   constructor() {}
 
+  //TODO: unsubscribe on destroy?
+  //TODO: consider delayed timer updates,
+  //  and browser in background / device sleeping.
+  //Better to calculate the time delta since we last unpaused,
+  //  and add that to our elapsedBeforeLastPause time.
+
   ngOnInit(){
     let timer = Observable.timer(0,1000); //start after 0 sec, tick every second.
-    //TODO: address unsubscribing.
     timer.subscribe(t => {
-      //TODO: consider delayed timer updates,
-      //               and browser in background.
-      //Better to calculate the time delta since we last unpaused,
-      //and add that to our elapsedBeforeLastPause time.
       if (this.isRunning) {
         this.elapsedTime += 1;
         this.elapsedTimeTotal += 1;
