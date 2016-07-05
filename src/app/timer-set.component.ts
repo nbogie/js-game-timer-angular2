@@ -13,18 +13,20 @@ import { PlayerTimerComponent } from './player-timer.component';
 
 export class TimerSetComponent implements OnInit {
 
-  players: Player[] = 'Errol Jon Pankaj Neill'
+  nextId: number = 0;
+  
+  players: Player[] = 'Daniel Dubois Dmitri Dinah'
       .split(' ')
       .map(n => this.makePlayer(n));
-
-  constructor() {}
 
   ngOnInit() {
   }
 
   makePlayer(name): Player {
       return {
+        id: this.nextId++,
         name: name,
+        isRunning: false,
         color: 'red'
       }
   }
@@ -35,8 +37,9 @@ export class TimerSetComponent implements OnInit {
       this.players.splice(ix, 1);
     }
   }
-  startPlayer(component) {
-    console.log("a timer was started: " + component);
+  
+  playerStarted(playerId) {
+    this.players.filter(p => p.id !== playerId).forEach(p => p.isRunning = false);
   }
 
   addPlayer() {

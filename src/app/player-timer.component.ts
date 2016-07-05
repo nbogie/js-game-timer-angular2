@@ -14,12 +14,11 @@ export class PlayerTimerComponent implements OnInit {
   @Input() player: Player;
 
   @Output() delete = new EventEmitter<Player>();
-  @Output() start = new EventEmitter<PlayerTimerComponent>();
+  @Output() start = new EventEmitter<number>(); //emits player id
 
   elapsedTime: number = 0;
   elapsedTimeTotal: number = 0;
 
-  isRunning: boolean = false;
 
   constructor() {}
 
@@ -32,7 +31,7 @@ export class PlayerTimerComponent implements OnInit {
   ngOnInit(){
     let timer = Observable.timer(0,1000); //start after 0 sec, tick every second.
     timer.subscribe(t => {
-      if (this.isRunning) {
+      if (this.player.isRunning) {
         this.elapsedTime += 1;
         this.elapsedTimeTotal += 1;
       }
@@ -51,11 +50,11 @@ export class PlayerTimerComponent implements OnInit {
   }
 
   toggleTimer() {
-    if (!this.isRunning) {
+    if (!this.player.isRunning) {
       this.elapsedTime = 0;
-      this.start.emit(this);
+      this.start.emit(this.player.id);
     }
-    this.isRunning = !this.isRunning;
+    this.player.isRunning = !this.player.isRunning;
   }
 
 
