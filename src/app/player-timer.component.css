@@ -1,0 +1,17 @@
+/* div {
+  border: 1px solid blue;
+} */
+
+input, button {
+  border-radius: 0;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+.min-gutter > [class*='col-'] {
+    padding-right:1px;
+    padding-left:1px;
+}

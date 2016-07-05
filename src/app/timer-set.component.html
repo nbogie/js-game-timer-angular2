@@ -1,3 +1,19 @@
-<p>
-  timer-set works!
-</p>
+<div class="row">
+  <button (click)="addPlayer()" class="btn btn-success">Add Player <i class="fa fa-plus"></i></button>
+</div>
+
+<div class="row">
+  <div class="col-lg-offset-3 col-lg-6">  
+    <ul class="list-unstyled">
+      <li *ngFor="let player of players">
+        <app-player-timer 
+          (delete)="deletePlayer($event)"
+          (start)="startPlayer($event)"
+          [player]="player"></app-player-timer>
+      </li>
+    </ul>
+  </div>
+</div>
+<button *ngIf="false" (click)="toggleShowToDos()" class="btn btn-info">Show TODOs</button>
+
+<ul *ngIf="showToDos"><li *ngFor="let todo of todos">{{todo}}</li></ul>
