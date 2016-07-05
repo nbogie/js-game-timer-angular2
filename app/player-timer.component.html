@@ -5,14 +5,16 @@
   </div>
 
   <div class="col-xs-6">
-    <button (click)="toggleTimer()" class="btn btn-block" [ngClass]="{ 'btn-warning': isRunning,
-    'btn-primary': !isRunning }">
+    <button (click)="toggleTimer()" 
+            class="btn btn-block" 
+            [ngClass]="{ 'btn-warning': player.isRunning,
+                         'btn-primary': !player.isRunning }">
       <i class="fa fa" [ngClass]="{
-        'fa-pause': isRunning, 
-        'fa-play': !isRunning
+        'fa-pause': player.isRunning, 
+        'fa-play': !player.isRunning
         }"></i>
       {{elapsedTime | durationClock }}
-       ( {{elapsedTimeTotal | durationClock }} )
+      ( {{elapsedTimeTotal | durationClock }} )
   </button>
   </div>
   

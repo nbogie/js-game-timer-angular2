@@ -7,13 +7,11 @@
     <ul class="list-unstyled">
       <li *ngFor="let player of players">
         <app-player-timer 
-          (delete)="deletePlayer($event)"
-          (start)="startPlayer($event)"
-          [player]="player"></app-player-timer>
+              (delete)="deletePlayer($event)"
+              (start)="playerStarted($event)"
+              [player]="player">
+        </app-player-timer>
       </li>
     </ul>
   </div>
 </div>
-<button *ngIf="false" (click)="toggleShowToDos()" class="btn btn-info">Show TODOs</button>
-
-<ul *ngIf="showToDos"><li *ngFor="let todo of todos">{{todo}}</li></ul>
