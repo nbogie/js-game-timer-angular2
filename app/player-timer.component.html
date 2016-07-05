@@ -1,0 +1,26 @@
+<div class="player-timer row min-gutter">
+  
+  <div class="col-xs-4">
+    <input type="text" [(ngModel)]="player.name" class="form-control" placeholder="Name..."/>
+  </div>
+
+  <div class="col-xs-6">
+    <button (click)="toggleTimer()" class="btn btn-block" [ngClass]="{ 'btn-warning': isRunning,
+    'btn-primary': !isRunning }">
+      <i class="fa fa" [ngClass]="{
+        'fa-pause': isRunning, 
+        'fa-play': !isRunning
+        }"></i>
+      {{elapsedTime | durationClock }}
+       ( {{elapsedTimeTotal | durationClock }} )
+  </button>
+  </div>
+  
+  <div class="col-xs-1">
+    <button (click)="resetTimer()" class="btn btn-warning btn-block"><i class="fa fa fa-refresh"></i></button>
+  </div>
+  <div class="col-xs-1">
+    <button (click)="deleteSelf()" class="btn btn-danger btn-block"><i class="fa fa fa-trash"></i></button>
+  </div>
+</div>
+
