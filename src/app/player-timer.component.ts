@@ -16,11 +16,10 @@ export class PlayerTimerComponent implements OnInit {
 
   @Output() delete = new EventEmitter<Player>();
   @Output() start = new EventEmitter<number>(); //emits player id
+  @Output() overTime = new EventEmitter<Player>();
 
   elapsedTime: number = 0;
   elapsedTimeTotal: number = 0;
-  audio : any = document.getElementById('player');
-
   
   constructor() {}
 
@@ -47,10 +46,9 @@ export class PlayerTimerComponent implements OnInit {
   isOverTime() { 
     return this.threshold && this.elapsedTime >= this.threshold;
   }
+  
   flagOverTime() {
-    if (this.audio){
-      this.audio.play();
-    }
+    this.overTime.emit(this.player);
   }
 
   deleteSelf() {

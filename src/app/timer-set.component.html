@@ -9,6 +9,7 @@
         <app-player-timer 
               (delete)="deletePlayer($event)"
               (start)="playerStarted($event)"
+              (overTime)="playOverTimeSound($event)"
               [player]="player"
               [threshold]="threshold"
               >
@@ -20,3 +21,7 @@
     <input type="number" [(ngModel)]="threshold" placeholder="warn after n seconds..." />
   </div>
 </div>
+
+<audio id="player">
+  <source id="source" src="/sounds/plink.mp3"/>
+</audio>

@@ -14,13 +14,15 @@ import { PlayerTimerComponent } from './player-timer.component';
 export class TimerSetComponent implements OnInit {
 
   nextId: number = 0;
-  threshold: number = 5;
-
+  threshold: number = 2;
+  audio : any;
+  
   players: Player[] = 'Daniel Dubois Dmitri Dinah'
       .split(' ')
       .map(n => this.makePlayer(n));
 
   ngOnInit() {
+     this.audio = document.getElementById('player');
   }
 
   makePlayer(name): Player {
@@ -32,9 +34,9 @@ export class TimerSetComponent implements OnInit {
       }
   }
   foo() {
-    console.log(this.threshold); 
-
+    console.log("foo()"); 
   }
+
   deletePlayer(player) {
     let ix = this.players.indexOf(player);
     if (ix >= 0){
@@ -48,5 +50,14 @@ export class TimerSetComponent implements OnInit {
 
   addPlayer() {
     this.players.push(this.makePlayer('Steve'));
+  }
+
+  playOverTimeSound() {
+    console.log("try to play sound");
+    if (this.audio){ //TODO: check loaded
+      this.audio.play();
+    } else {
+      console.log("audio reference null/undefined");
+    }
   }
 }
