@@ -1,0 +1,7 @@
+Hi all.  In a simple chess-clock exercise, I needed for a set of components ("timers") to behave like radio buttons - when one player's timer is started, the others are automatically stopped, as a convenience.  I'm curious as to the best component communication for this purpose.
+
+https://nbogie.github.io/js-game-timer-angular2/
+
+For now, I've implemented this by exposing each timer's on/off state as an input, so that the parent can manipulate each one directly.  I'd prefer to message them all and have them handle their own state.  Thoughts?
+
+I would much prefer to just signal the stop request to all relevant children and let them encapsulate their own state, but none of the component communication patterns in <a href="https://angular.io/docs/ts/latest/cookbook/component-communication.html#!#parent-to-child-on-changes">the cookbook</a> seems to match.  The closest functional match seems to be "Parent calls a ViewChild", except I'd have multiple of those.  It looks ungainly, to me.
