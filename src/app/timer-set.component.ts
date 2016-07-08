@@ -14,7 +14,8 @@ import { PlayerTimerComponent } from './player-timer.component';
 export class TimerSetComponent implements OnInit {
 
   nextId: number = 0;
-  
+  threshold: number = 5;
+
   players: Player[] = 'Daniel Dubois Dmitri Dinah'
       .split(' ')
       .map(n => this.makePlayer(n));
@@ -30,7 +31,10 @@ export class TimerSetComponent implements OnInit {
         color: 'red'
       }
   }
+  foo() {
+    console.log(this.threshold); 
 
+  }
   deletePlayer(player) {
     let ix = this.players.indexOf(player);
     if (ix >= 0){

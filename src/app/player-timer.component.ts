@@ -12,14 +12,16 @@ import { DurationClockPipe } from './duration-clock.pipe';
 })
 export class PlayerTimerComponent implements OnInit {
   @Input() player: Player;
+  @Input() threshold: number;
 
   @Output() delete = new EventEmitter<Player>();
   @Output() start = new EventEmitter<number>(); //emits player id
 
   elapsedTime: number = 0;
   elapsedTimeTotal: number = 0;
+  audio : any = document.getElementById('player');
 
-
+  
   constructor() {}
 
   //TODO: unsubscribe on destroy?
@@ -32,13 +34,24 @@ export class PlayerTimerComponent implements OnInit {
     let timer = Observable.timer(0,1000); //start after 0 sec, tick every second.
     timer.subscribe(t => {
       if (this.player.isRunning) {
+        let overBefore = this.isOverTime();
         this.elapsedTime += 1;
         this.elapsedTimeTotal += 1;
+        if (this.isOverTime() && !overBefore){
+          this.flagOverTime();
+        }
       }
-    }
-    );
+    });
   }
 
+  isOverTime() { 
+    return this.threshold && this.elapsedTime >= this.threshold;
+  }
+  flagOverTime() {
+    if (this.audio){
+      this.audio.play();
+    }
+  }
 
   deleteSelf() {
     this.delete.emit(this.player);
@@ -56,6 +69,5 @@ export class PlayerTimerComponent implements OnInit {
     }
     this.player.isRunning = !this.player.isRunning;
   }
-
 
 }

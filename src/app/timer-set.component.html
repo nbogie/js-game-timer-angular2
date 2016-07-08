@@ -9,9 +9,14 @@
         <app-player-timer 
               (delete)="deletePlayer($event)"
               (start)="playerStarted($event)"
-              [player]="player">
+              [player]="player"
+              [threshold]="threshold"
+              >
         </app-player-timer>
       </li>
     </ul>
+    <button (click)="foo()" class="btn btn-success">Test</button>
+    <label>Time threshold: </label>    
+    <input type="number" [(ngModel)]="threshold" placeholder="warn after n seconds..." />
   </div>
 </div>
