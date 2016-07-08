@@ -7,14 +7,19 @@
   <div class="col-xs-6">
     <button (click)="toggleTimer()" 
             class="btn btn-block" 
-            [ngClass]="{ 'btn-warning': player.isRunning,
-                         'btn-primary': !player.isRunning }">
+            [ngClass]="{ 
+              'btn-primary': !player.isRunning,
+              'btn-warning': player.isRunning && !isOverTime(),
+              'btn-danger': player.isRunning && isOverTime()
+            }">
       <i class="fa fa" [ngClass]="{
-        'fa-pause': player.isRunning, 
-        'fa-play': !player.isRunning
+          'fa-pause': player.isRunning, 
+          'fa-play': !player.isRunning
         }"></i>
       {{elapsedTime | durationClock }}
-      ( {{elapsedTimeTotal | durationClock }} )
+      <small>
+        ( {{elapsedTimeTotal | durationClock }} )
+      </small>
   </button>
   </div>
   
@@ -25,4 +30,3 @@
     <button (click)="deleteSelf()" class="btn btn-danger btn-block"><i class="fa fa fa-trash"></i></button>
   </div>
 </div>
-
