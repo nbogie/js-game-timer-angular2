@@ -33,9 +33,6 @@ export class TimerSetComponent implements OnInit {
         color: 'red'
       }
   }
-  foo() {
-    console.log("foo()"); 
-  }
 
   deletePlayer(player) {
     let ix = this.players.indexOf(player);
