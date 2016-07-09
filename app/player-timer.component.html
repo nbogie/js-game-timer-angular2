@@ -1,4 +1,4 @@
-<div class="player-timer row min-gutter">
+<div class="player-timer row no-gutter">
   
   <div class="col-xs-3">
     <input type="text" [(ngModel)]="player.name" class="form-control input-lg" placeholder="Name..."/>
@@ -12,7 +12,7 @@
               'btn-warning': player.isRunning && !isOverTime(),
               'btn-danger': player.isRunning && isOverTime()
             }">
-      <i class="fa fa" [ngClass]="{
+      <i class="fa" [ngClass]="{
           'fa-pause': player.isRunning, 
           'fa-play': !player.isRunning
         }"></i>
@@ -25,10 +25,12 @@
 
 
 
-  <div class="col-xs-3">
-    <div class="btn-group btn-block" role="group" aria-label="...">
-      <button (click)="resetTimer()" type="button" class="btn btn-lg btn-warning"><i class="fa fa-refresh"></i></button>
-      <button (click)="deleteSelf()" type="button" class="btn btn-lg btn-danger"><i class="fa fa-trash"></i></button>
+  <div class="col-xs-3 no-gutter">
+    <div class="col-xs-6">
+      <button (click)="resetTimer()" type="button" class="btn btn-lg btn-block btn-warning"><i class="fa fa-refresh"></i></button>
+    </div>
+    <div class="col-xs-6">
+      <button (click)="deleteSelf()" type="button" class="btn btn-lg btn-block btn-danger"><i class="fa fa-trash"></i></button>
     </div>
   </div>
 
