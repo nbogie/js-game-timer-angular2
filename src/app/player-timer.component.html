@@ -12,7 +12,7 @@
               'btn-warning': player.isRunning && !isOverTime(),
               'btn-danger': player.isRunning && isOverTime()
             }">
-      <i class="fa fa" [ngClass]="{
+      <i class="fa" [ngClass]="{
           'fa-pause': player.isRunning, 
           'fa-play': !player.isRunning
         }"></i>
