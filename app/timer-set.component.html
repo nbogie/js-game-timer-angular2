@@ -1,5 +1,5 @@
 <div class="row">
-  <button (click)="addPlayer()" class="btn btn-success">Add Player <i class="fa fa-plus"></i></button>
+  <button (click)="addPlayer()" class="btn btn-lg btn-block btn-default">Add Player <i class="fa fa-plus"></i></button>
 </div>
 
 <div class="row">
@@ -16,9 +16,12 @@
         </app-player-timer>
       </li>
     </ul>
-    <button (click)="foo()" class="btn btn-success">Test</button>
+
+    <button (click)="foo()" class="btn btn-lg btn-default">Test</button>
+
     <label>Time threshold: </label>    
-    <input type="number" [(ngModel)]="threshold" placeholder="warn after n seconds..." />
+    <input type="number" class="input-lg" [(ngModel)]="threshold" placeholder="warn after n seconds..." />
+
   </div>
 </div>
 
