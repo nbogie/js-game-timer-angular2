@@ -1,6 +1,6 @@
 <div class="player-timer row min-gutter">
   
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <input type="text" [(ngModel)]="player.name" class="form-control input-lg" placeholder="Name..."/>
   </div>
 
@@ -20,13 +20,16 @@
       <small>
         ( {{elapsedTimeTotal | durationClock }} )
       </small>
-  </button>
+   </button>
   </div>
-  
-  <div class="col-xs-1">
-    <button (click)="resetTimer()" class="btn btn-lg btn-warning btn-block"><i class="fa fa-refresh"></i></button>
+
+
+
+  <div class="col-xs-3">
+    <div class="btn-group btn-block" role="group" aria-label="...">
+      <button (click)="resetTimer()" type="button" class="btn btn-lg btn-warning"><i class="fa fa-refresh"></i></button>
+      <button (click)="deleteSelf()" type="button" class="btn btn-lg btn-danger"><i class="fa fa-trash"></i></button>
+    </div>
   </div>
-  <div class="col-xs-1">
-    <button (click)="deleteSelf()" class="btn btn-lg btn-danger btn-block"><i class="fa fa-trash"></i></button>
-  </div>
+
 </div>
